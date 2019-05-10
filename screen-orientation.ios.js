@@ -3,7 +3,8 @@
  */
 
 
-var frameModule = require("ui/frame");
+// var frameModule = require("ui/frame");
+const application = require("tns-core-modules/application/application");
 
 
 /**
@@ -25,7 +26,7 @@ function findPrototypeForProperty(object,property){
  * @param bool
  */
 function setShouldAutoRotate(bool){
-    var prototypeForNavController = findPrototypeForProperty(frameModule.topmost().ios.controller,"shouldAutorotate");
+    var prototypeForNavController = findPrototypeForProperty(application.ios.rootController,"shouldAutorotate");
     Object.defineProperty(prototypeForNavController,"shouldAutorotate",{
         configurable:true,
         enumerable:false,
@@ -72,4 +73,3 @@ exports.setCurrentOrientation=setCurrentOrientation;
 
 
 exports.orientationCleanup=cleanupOrientation;
-
